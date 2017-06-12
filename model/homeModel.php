@@ -12,6 +12,19 @@ function getAllAccounts()
 	return $query->fetchAll();
 }
 
+function getAllExams() 
+{
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM exams";
+	$exams = $db->prepare($sql);
+	$exams->execute();
+
+	$db = null;
+
+	return $exams->fetchAll();
+}
+
 function loginUser(){
     $db = openDatabaseConnection();
     
@@ -29,7 +42,7 @@ function loginUser(){
     
     if($row != null){    
         if($Password == $row['Password']){
-            echo "Success!";
+            header("Location:" . URL . "beveiligd/index");
         }else{
         echo "This password does not exist. Please try again.";
         }
