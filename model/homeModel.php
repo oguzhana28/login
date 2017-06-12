@@ -26,6 +26,7 @@ function getAllExams()
 }
 
 function loginUser(){
+    $_SESSION['loggedIn'] = 0;
     $db = openDatabaseConnection();
     
     $Password = $_POST['Password'];
@@ -36,12 +37,21 @@ function loginUser(){
     //$result = mysqli_fetch_assoc($output);
     $stmt = $db->prepare( $sql); 
     $stmt->execute(); 
-    $row = $stmt->fetch();
-    var_dump($row);
+    $user = $stmt->fetch();
+    var_dump($user);
         
-    
-    if($row != null){    
-        if($Password == $row['Password']){
+    if(!empty($user['Username'])){
+        $username = $user['Username'];
+        $_SESSION['username'] = $username;
+        $email = $user['Email'];
+        $_SESSION['email'] = $email;
+        
+        //Set session logged in
+        
+        $_SESSION['loggedIn'] = 1;
+    }
+    if($user != null){    
+        if($Password == $user['Password']){
             header("Location:" . URL . "beveiligd/index");
         }else{
         echo "This password does not exist. Please try again.";

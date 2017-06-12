@@ -9,3 +9,8 @@ function login()
 {
 	loginUser();
 }
+
+function logout(){
+    session_destroy();
+   header("Location: ")
+}

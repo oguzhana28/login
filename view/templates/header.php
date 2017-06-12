@@ -9,3 +9,16 @@
 </head>
 
 <body>
+<?php var_dump($_SESSION)?>
+<?php if ($_SESSION['loggedIn'] == 1){ ?>
+    <div id="menu">
+    <ul>
+        <li>
+            Hi, <?= $_SESSION['username'], $_SESSION['email'] ?>
+        </li><br>
+        <li>
+            <a href="<?= URL ?>home/logout">logout</a>
+        </li>
+    </ul>
+</div>
+<?php } ?>
