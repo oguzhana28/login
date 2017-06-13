@@ -1,18 +1,18 @@
-<div class="Page">
-    <h1>Exams</h1>
-</div>
 <div id="Container">
+   <?php if ($_SESSION['role'] == "student"){ ?>
+   <h1>Exams</h1>
+   
     <div class="examList">
        <a href="<?= URL ?>admin/createExam">create</a>
         <table>
             <thead style="background-color: #ddd; font-weight: bold;">
                 <tr>
                     <td class="header">Id</td>
-                    <td class="header">Name</td>
-                    <td class="header">Price</td>
-                    <td class="header">Amount available</td>
-                    <td class="header">Edit</td>
-                    <td class="header">Delete</td>
+                    <td class="header">Firstname</td>
+                    <td class="header">Lastname</td>
+                    <td class="header">Studentnumber</td>
+                    <td class="header">edit</td>
+                    <td class="header">delete</td>
                 </tr>
             </thead>
             <tbody>
@@ -31,10 +31,12 @@
                             <?= $exam['studentnumber']; ?>
                         </td>
                     </tr>
-                    <?php } ?>
+               <?php } ?>
             </tbody>
-
-
         </table>
     </div>
+    <?php }else if ($_SESSION['role'] == "teacher"){ ?>
+   <h1>students</h1>
+   <?php } ?>
+
 </div>

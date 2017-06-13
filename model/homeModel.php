@@ -33,8 +33,6 @@ function loginUser(){
     $Email = $_POST['Email'];
     
     $sql = "SELECT * FROM register where Email='$Email'";
-   // $output = mysqli_query($db, $sql);
-    //$result = mysqli_fetch_assoc($output);
     $stmt = $db->prepare( $sql); 
     $stmt->execute(); 
     $user = $stmt->fetch();
@@ -45,7 +43,8 @@ function loginUser(){
         $_SESSION['username'] = $username;
         $email = $user['Email'];
         $_SESSION['email'] = $email;
-        
+        $role = $user['role'];
+        $_SESSION['role'] = $role;
         //Set session logged in
         
         $_SESSION['loggedIn'] = 1;

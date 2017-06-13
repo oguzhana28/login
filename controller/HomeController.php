@@ -12,5 +12,5 @@ function login()
 
 function logout(){
     session_destroy();
-   header("Location: ")
+    header("Location:" . URL . "home/index");
 }
